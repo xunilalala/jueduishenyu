@@ -2,7 +2,7 @@ name: AutomaticCheck-in
 on:
   workflow_dispatch:
   schedule:
-  - cron: '30 21 * * *'
+  - cron: '30 23 * * *'
 
 jobs:
   # This workflow contains a single job called "build"
