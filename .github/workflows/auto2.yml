@@ -1,0 +1,43 @@
+name: AutomaticCheck-in2
+on:
+  workflow_dispatch:
+  schedule:
+  - cron: '30 10 * * *'
+
+jobs:
+  # This workflow contains a single job called "build"
+  build:
+    # The type of runner that the job will run on
+    runs-on: ubuntu-latest
+
+    # Steps represent a sequence of tasks that will be executed as part of the job
+    steps:
+      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      # Runs a single command using the runners shell
+      - name: 'Set up Python'
+        uses: actions/setup-python@v1
+        with:
+           python-version: 3.7
+
+      - name: 'Cache pip packages'
+        uses: actions/cache@v2
+        with:
+          path: ~/.cache/pip
+          key: ${{ runner.os }}-pip-${{ hashFiles('requirements.txt') }}
+          restore-keys: |
+            ${{ runner.os }}-pip-
+
+      - name: 'Install requirements'
+        run: pip install -r ./Spider/requirements.txt
+
+      - name: 'Working'
+        run: |
+          sudo cp -p ./chrome/chromedriver /usr/bin/
+          chmod -R 777 /usr/bin/chromedriver
+          python ./Spider/xuni.py
+          python ./Spider/xuni256.py
+          python ./Spider/xuni512.py
+          python ./Spider/xuni1024.py
