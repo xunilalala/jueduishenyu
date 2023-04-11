@@ -18,7 +18,8 @@ users = [
     {'username': 'xuni512', 'password': 'ml,152ml.636'},
     {'username': 'xuni', 'password': 'ml,152ml.636'},
     {'username': 'xuni1024', 'password': 'ml,152ml.636'},
-    {'username': 'xuni256', 'password': 'ml,152ml.636'}
+    {'username': 'xuni256', 'password': 'ml,152ml.636'},
+    {'username': 'xuni2048', 'password': '592uir4UdtqGn3!'}
 ]
 
 for user in users:
