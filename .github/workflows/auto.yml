@@ -38,4 +38,9 @@ jobs:
           sudo cp -p ./chrome/chromedriver /usr/bin/
           chmod -R 777 /usr/bin/chromedriver
           python ./Spider/jueduishenyu.py
+      - name: 'Wait for 10 minutes'
+        run: sleep 600
+
+      - name: 'Run script again'
+        run: python ./Spider/jueduishenyu.py
          
