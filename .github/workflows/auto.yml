@@ -37,7 +37,5 @@ jobs:
         run: |
           sudo cp -p ./chrome/chromedriver /usr/bin/
           chmod -R 777 /usr/bin/chromedriver
-          python ./Spider/xuni.py
-          python ./Spider/xuni256.py
-          python ./Spider/xuni512.py
-          python ./Spider/xuni1024.py
+          python ./Spider/jueduishenyu.py
+         
