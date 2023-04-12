@@ -52,6 +52,11 @@ for user in users:
         EC.presence_of_element_located((By.CLASS_NAME, "go-user-qiandao"))
     )
     driver.find_element_by_class_name("go-user-qiandao").click()
+    time.sleep(10)
+    WebDriverWait(driver, 10).until(
+        EC.presence_of_element_located((By.CLASS_NAME, "go-user-qiandao"))
+    )
+    driver.find_element_by_class_name("go-user-qiandao").click()
     driver.quit()
     print(f"{user['username']}签到完成")
 
