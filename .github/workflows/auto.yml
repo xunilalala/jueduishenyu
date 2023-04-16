@@ -2,7 +2,13 @@ name: AutomaticCheck-in
 on:
   workflow_dispatch:
   schedule:
-  - cron: '0 23,4,8,15 * * *'
+    - cron: '0 1 * * 0'   # 星期日上午9点
+    - cron: '0 2 * * 1'   # 星期一上午10点
+    - cron: '0 3 * * 2'   # 星期二上午11点
+    - cron: '0 4 * * 3'   # 星期三中午12点
+    - cron: '0 5 * * 4'   # 星期四下午1点
+    - cron: '0 6 * * 5'   # 星期五下午2点
+    - cron: '0 7 * * 6'   # 星期六下午3点
 
 
 jobs:
