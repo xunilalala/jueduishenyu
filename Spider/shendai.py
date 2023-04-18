@@ -57,7 +57,6 @@ for user in users:
     time.sleep(3)
     reward_button_list = driver.find_elements_by_xpath('//div[@class="bar-user-info-row bar-mission-action"]')
     if len(reward_button_list) > 0:
-        reward_button = reward_button_list[0]
         reward_button.click()
     else:
         print('Element not found')
