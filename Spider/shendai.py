@@ -58,5 +58,6 @@ for user in users:
     except: print(user['username']+"可能签到失败")
     # 关闭浏览器
     driver.quit()
+    time.sleep(20)
 
 print("所有用户签到完成")
