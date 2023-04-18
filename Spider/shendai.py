@@ -30,7 +30,7 @@ users = [
 
 for user in users:
     # 创建Chrome浏览器对象
-    driver = webdriver.Chrome(options=chrome_options,executable_path=chromedriver)
+    driver = webdriver.Chrome(options=chrome_options)
     driver.maximize_window()
     # 打开网页
 
