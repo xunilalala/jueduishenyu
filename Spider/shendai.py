@@ -17,8 +17,6 @@ chrome_options.add_argument('--disable-dev-shm-usage')
 # 创建Chrome浏览器对象
 driver = webdriver.Chrome()
 driver.maximize_window()
-# 打开网页
-
 
 # 用户名密码表
 users = [
