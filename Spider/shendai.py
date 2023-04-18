@@ -52,7 +52,10 @@ for user in users:
     # 点击领取签到奖励
     time.sleep(3)
     reward_button = WebDriverWait(driver, 10).until(EC.presence_of_element_located((By.XPATH, '//div[@class="bar-user-info-row bar-mission-action"]')))
-    reward_button.click()
+    
+    try:
+        reward_button.click()
+    except: print(user['username']+"可能签到失败")
     # 关闭浏览器
     driver.quit()
 
