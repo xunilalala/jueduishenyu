@@ -55,8 +55,9 @@ for user in users:
     sign_in_button.click()
     # 点击领取签到奖励
     time.sleep(5)
-    reward_button = driver.find_elements_by_xpath('//div[@class="bar-user-info-row bar-mission-action"]')
+    reward_button = driver.find_element_by_xpath('//div[@class="bar-user-info-row bar-mission-action"]')
     reward_button.click()
+
     
 
 
