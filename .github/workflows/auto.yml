@@ -44,6 +44,7 @@ jobs:
         run: |
           sudo cp -p ./chrome/chromedriver /usr/bin/
           chmod -R 777 /usr/bin/chromedriver
-          python ./Spider/jueduishenyu.py
+        
           python ./Spider/shendai.py
+          python ./Spider/jueduishenyu.py
   
