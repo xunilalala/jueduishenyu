@@ -58,13 +58,13 @@ for user in users:
     # 点击领取签到奖励
     time.sleep(15)
     reward_button = driver.find_element_by_xpath('//div[@class="bar-user-info-row bar-mission-action"]')
-    driver.execute_script("arguments[0].click();", reward_button)
-
     
-
-
+    try:
+        driver.execute_script("arguments[0].click();", reward_button)
+    except: 
+        print(user['username']+"签到失败")
     # 关闭浏览器
     driver.quit()
     time.sleep(10)
-    print(user['username']+"完成签到")
+    print(user['username']+"结束")
 print("神代--完成")
