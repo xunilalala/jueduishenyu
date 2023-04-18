@@ -38,7 +38,7 @@ for user in users:
     driver.get('https://www.sdhhz.cc/')
     # 点击登录按钮
     time.sleep(10)
-    login_button = WebDriverWait(driver, 10).until(EC.presence_of_element_located((By.CLASS_NAME, 'empty')))
+    login_button = WebDriverWait(driver, 20).until(EC.presence_of_element_located((By.CLASS_NAME, 'empty')))
     login_button.click()
     time.sleep(5)
     # 在登录页面中输入用户名和密码并点击登录按钮
@@ -47,14 +47,14 @@ for user in users:
     password = driver.find_element_by_name("password")
     password.send_keys(user['password'])
     print(f"Logging in as {user['username']}")
-    login_button = WebDriverWait(driver, 10).until(EC.presence_of_element_located((By.XPATH, '//button[text()="快速登录"]')))
+    login_button = WebDriverWait(driver, 20).until(EC.presence_of_element_located((By.XPATH, '//button[text()="快速登录"]')))
     login_button.click()
-    time.sleep(8)
+    time.sleep(16)
     # 点击今日签到
-    sign_in_button = WebDriverWait(driver, 10).until(EC.presence_of_element_located((By.XPATH, '//div[@class="bar-item bar-mission"]')))
+    sign_in_button = WebDriverWait(driver, 20).until(EC.presence_of_element_located((By.XPATH, '//div[@class="bar-item bar-mission"]')))
     sign_in_button.click()
     # 点击领取签到奖励
-    time.sleep(5)
+    time.sleep(10)
     reward_button = driver.find_element_by_xpath('//div[@class="bar-user-info-row bar-mission-action"]')
     reward_button.click()
 
