@@ -55,8 +55,13 @@ for user in users:
     sign_in_button.click()
     # 点击领取签到奖励
     time.sleep(3)
-    reward_button = WebDriverWait(driver, 10).until(EC.presence_of_element_located((By.XPATH, '//div[@class="bar-user-info-row bar-mission-action"]')))
-    reward_button.click()
+    reward_button_list = driver.find_elements_by_xpath('//div[@class="bar-user-info-row bar-mission-action"]')
+    if len(reward_button_list) > 0:
+        reward_button = reward_button_list[0]
+        reward_button.click()
+    else:
+        print('Element not found')
+
     # 关闭浏览器
     driver.quit()
     time.sleep(10)
