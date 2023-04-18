@@ -56,7 +56,14 @@ for user in users:
     # 点击领取签到奖励
     time.sleep(10)
     reward_button = driver.find_element_by_xpath('//div[@class="bar-user-info-row bar-mission-action"]')
-    reward_button.click()
+    # 创建ActionChains对象
+    action = ActionChains(driver)
+    # 将鼠标移动到要点击的元素上
+    action.move_to_element(reward_button)
+    # 执行点击操作
+    action.click()
+    # 执行所有操作
+    action.perform()
 
     
 
