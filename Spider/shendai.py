@@ -14,9 +14,7 @@ chrome_options.add_argument('--no-sandbox')
 chrome_options.add_argument('--disable-gpu')
 chrome_options.add_argument('--disable-dev-shm-usage')
 
-# 创建Chrome浏览器对象
-driver = webdriver.Chrome()
-driver.maximize_window()
+
 
 # 用户名密码表
 users = [
