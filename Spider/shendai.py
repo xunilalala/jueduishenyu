@@ -6,10 +6,14 @@ from selenium.webdriver.common.by import By
 import time
 
 chrome_options = Options()
-chrome_options.add_argument('--headless')
-chrome_options.add_argument('--no-sandbox')
+chrome_options.add_argument('--user-agent=Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/61.0.3163.100 Safari/537.36')
 chrome_options.add_argument('--disable-gpu')
-chrome_options.add_argument('--disable-dev-shm-usage')
+chrome_options.add_argument('--no-sandbox')
+chrome_options.add_argument('--disable-setuid-sandbox')
+chrome_options.add_argument('--no-first-run')
+chrome_options.add_argument('--no-zygote')
+chrome_options.add_argument('--single-process')
+chrome_options.add_argument('--headless')
 
 # 创建Chrome浏览器对象
 driver = webdriver.Chrome(options=chrome_options)
