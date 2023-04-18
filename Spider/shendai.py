@@ -15,11 +15,7 @@ chrome_options.add_argument('--no-zygote')
 chrome_options.add_argument('--single-process')
 chrome_options.add_argument('--headless')
 
-# 创建Chrome浏览器对象
-driver = webdriver.Chrome(options=chrome_options)
-driver.maximize_window()
-# 打开网页
-driver.get('https://www.sdhhz.cc/')
+
 
 # 用户名密码表
 users = [
@@ -34,6 +30,11 @@ users = [
 ]
 
 for user in users:
+    # 创建Chrome浏览器对象
+    driver = webdriver.Chrome(options=chrome_options)
+    driver.maximize_window()
+    # 打开网页
+    driver.get('https://www.sdhhz.cc/')
     # 点击登录按钮
     login_button = WebDriverWait(driver, 10).until(EC.presence_of_element_located((By.CLASS_NAME, 'empty')))
     login_button.click()
