@@ -18,12 +18,7 @@ chrome_options.add_argument('--disable-dev-shm-usage')
 
 # 用户名密码表
 users = [
-    {'username': 'cuishi', 'password': 'yi-KY.T:qr6iMwy'},
-    {'username': 'daishen', 'password': 'miMJhPcv5MA!u!w'},
-    {'username': 'quechao', 'password': 't5W2Sw5vrH:X6A-'},
-    {'username': 'songhao', 'password': 'TZd!FXrvqSja2b6'},
-    {'username': 'tianshu', 'password': 'R!234n-bs3.anQD'},
-    {'username': 'xuni', 'password': 'AdfG:CaufU6inec'},
+    
     {'username': 'yituodabian', 'password': '2Ncx-sm_8jefX7r'},
     {'username': 'licheng', 'password': '-m-eeDki8x8CprT'}
 ]
