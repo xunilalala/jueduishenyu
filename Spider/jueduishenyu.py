@@ -65,4 +65,4 @@ for user in users:
     time.sleep(10)
     print(user['username']+"完成签到")
 
-print("所有用户签到完成")
+print("所有用户签到完成!")
