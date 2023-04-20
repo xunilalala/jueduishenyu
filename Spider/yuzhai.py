@@ -35,7 +35,7 @@ for user in users:
    
     # 定位到需要点击的元素
     login_button = driver.find_element_by_xpath("//button[@class='empty mobile-hidden']")
-    driver.execute_script("arguments[0].click();", reward_button)
+    driver.execute_script("arguments[0].click();", login_button)
     # 在登录页面中输入用户名和密码并点击登录按钮
     username_input = WebDriverWait(driver, 10).until(EC.presence_of_element_located((By.NAME, 'username')))
     password_input = WebDriverWait(driver, 10).until(EC.presence_of_element_located((By.NAME, 'password')))
