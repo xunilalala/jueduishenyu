@@ -48,7 +48,7 @@ for user in users:
     username.send_keys(user['username'])
     password = driver.find_element_by_name("password")
     password.send_keys(user['password'])
-    print(f"Logging in as {user['username']}")
+    print(user['username']+"完成登录")
     login_button = WebDriverWait(driver, 20).until(EC.presence_of_element_located((By.XPATH, '//button[text()="快速登录"]')))
     login_button.click()
     time.sleep(16)
