@@ -18,7 +18,7 @@ chrome_options.add_argument('--disable-dev-shm-usage')
 
 # 用户名密码表
 users = [
-    {'username': '18264410349@163.com', 'password': 'nT!LKsZh8P4:w-w'}
+    {'username': '18264410349@163.com', 'password': 'nT!LKsZh8P4:w-w'},
     {'username': '3120294679@qq.com', 'password': 'nT!LKsZh8P4:w-w'}
 ]
 
