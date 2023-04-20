@@ -14,16 +14,20 @@ chrome_options.add_argument('--no-sandbox')
 chrome_options.add_argument('--disable-gpu')
 chrome_options.add_argument('--disable-dev-shm-usage')
 
+# 创建Chrome浏览器对象
+driver = webdriver.Chrome()
+driver.maximize_window()
+# 打开网页
 
 
 # 用户名密码表
 users = [
     {'username': '3120294679@qq.com', 'password': 'nT!LKsZh8P4:w-w'}
-   
 ]
+
 for user in users:
     # 创建Chrome浏览器对象
-    driver = webdriver.Chrome(options=chrome_options)
+    driver = webdriver.Chrome()
     driver.maximize_window()
     # 打开网页
 
@@ -31,31 +35,26 @@ for user in users:
     driver.get('https://www.yuzhaiwuyu.com/')
     # 点击登录按钮
     time.sleep(10)
-    login_button = WebDriverWait(driver, 20).until(EC.presence_of_element_located((By.CLASS_NAME, 'empty')))
+    login_button = WebDriverWait(driver, 10).until(EC.presence_of_element_located((By.CLASS_NAME, 'empty')))
     login_button.click()
-    time.sleep(5)
     # 在登录页面中输入用户名和密码并点击登录按钮
-    username = driver.find_element_by_name("username")
-    username.send_keys(user['username'])
-    password = driver.find_element_by_name("password")
-    password.send_keys(user['password'])
+    username_input = WebDriverWait(driver, 10).until(EC.presence_of_element_located((By.NAME, 'username')))
+    password_input = WebDriverWait(driver, 10).until(EC.presence_of_element_located((By.NAME, 'password')))
+    username_input.send_keys(user['username'])
+    password_input.send_keys(user['password'])
     print(f"Logging in as {user['username']}")
-    login_button = WebDriverWait(driver, 20).until(EC.presence_of_element_located((By.XPATH, '//button[text()="快速登录"]')))
+    login_button = WebDriverWait(driver, 10).until(EC.presence_of_element_located((By.XPATH, '//button[text()="快速登录"]')))
     login_button.click()
-    time.sleep(16)
+    time.sleep(8)
     # 点击今日签到
-    sign_in_button = WebDriverWait(driver, 20).until(EC.presence_of_element_located((By.XPATH, '//div[@class="bar-item bar-mission"]')))
+    sign_in_button = WebDriverWait(driver, 10).until(EC.presence_of_element_located((By.XPATH, '//div[@class="bar-item bar-mission"]')))
     sign_in_button.click()
     # 点击领取签到奖励
-    time.sleep(15)
-    reward_button = driver.find_element_by_xpath('//div[@class="bar-user-info-row bar-mission-action"]')
-    
-    try:
-        driver.execute_script("arguments[0].click();", reward_button)
-    except: 
-        print(user['username']+"签到失败")
+    time.sleep(3)
+    reward_button = WebDriverWait(driver, 10).until(EC.presence_of_element_located((By.XPATH, '//div[@class="bar-user-info-row bar-mission-action"]')))
+    reward_button.click()
     # 关闭浏览器
     driver.quit()
     time.sleep(10)
-    print(user['username']+"结束")
+    print(user['username']+"完成签到")
 print("御宅--完成")
