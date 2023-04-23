@@ -47,4 +47,5 @@ jobs:
           python ./Spider/yuzhai.py
           python ./Spider/jueduishenyu.py
           python ./Spider/shendai.py
+          python ./Spider/xingmeng.py
   
