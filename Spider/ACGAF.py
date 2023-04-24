@@ -50,7 +50,7 @@ for user in users:
     time.sleep(5)
     # 点击今日签到
     sign_in_button = WebDriverWait(driver, 10).until(EC.presence_of_element_located((By.XPATH, '//div[@class="bar-item bar-mission"]')))
-    sign_in_button.click()
+    driver.execute_script("arguments[0].click();",sign_in_button)
     # 点击领取签到奖励
     time.sleep(3)
     reward_button = WebDriverWait(driver, 10).until(EC.presence_of_element_located((By.XPATH, '//div[@class="bar-user-info-row bar-mission-action"]')))
