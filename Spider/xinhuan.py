@@ -49,8 +49,8 @@ for user in users:
     driver.execute_script("arguments[0].click();",login_button)
     close_button = WebDriverWait(driver, 10).until(EC.element_to_be_clickable((By.XPATH, "//a[contains(@class, 'poi-dialog__footer__btn_default') and text()='关闭']")))
     driver.execute_script("arguments[0].click();", close_button)
-    # 点击领取签到奖励
-    signin_button = WebDriverWait(driver, 10).until(EC.element_to_be_clickable((By.XPATH, "//a[contains(@class, 'inn-nav__point-sign-daily__btn') and @title='签到']")))
+    # 点击签到
+    signin_button = WebDriverWait(driver, 20).until(EC.element_to_be_clickable((By.XPATH, "//a[contains(@class, 'inn-nav__point-sign-daily__btn') and @title='签到']")))
     signin_button.click()
     # 关闭浏览器
     time.sleep(2)
