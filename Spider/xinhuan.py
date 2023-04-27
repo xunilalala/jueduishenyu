@@ -5,15 +5,14 @@ from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.by import By
 import os
 import time
-from selenium.webdriver.common.by import By
-from selenium.webdriver.common.action_chains import ActionChains
 
 chrome_options = Options()
-# chrome_options.add_argument('--headless')
+chrome_options.add_argument('--headless')
 chrome_options.add_argument('--no-sandbox')
 chrome_options.add_argument('--disable-gpu')
 chrome_options.add_argument('--disable-dev-shm-usage')
-
+chromedriver = "/usr/bin/chromedriver"
+os.environ["webdriver.chrome.driver"] = chromedriver
 
 
 # 用户名密码表
@@ -27,7 +26,7 @@ users = [
 
 for user in users:
     # 创建Chrome浏览器对象
-    driver = webdriver.Chrome(options=chrome_options)
+    driver = webdriver.Chrome(options=chrome_options,executable_path=chromedriver)
     driver.maximize_window()
     # 打开网页
 
