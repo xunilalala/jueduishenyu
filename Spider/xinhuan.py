@@ -50,8 +50,12 @@ for user in users:
     close_button = WebDriverWait(driver, 10).until(EC.element_to_be_clickable((By.XPATH, "//a[contains(@class, 'poi-dialog__footer__btn_default') and text()='关闭']")))
     driver.execute_script("arguments[0].click();", close_button)
     # 点击签到
-    sign_button = WebDriverWait(driver, 10).until(EC.element_to_be_clickable((By.CSS_SELECTOR, "a.poi-tooltip.inn-nav__point-sign-daily__btn[title='签到']")))
-    driver.execute_script("arguments[0].click();", sign_button)
+    try:
+        sign_button = WebDriverWait(driver, 10).until(EC.element_to_be_clickable((By.CSS_SELECTOR, "a.poi-tooltip.inn-nav__point-sign-daily__btn[title='签到']")))
+        driver.execute_script("arguments[0].click();", sign_button)
+    except:
+        print(user['username']+"签到失败")
+
     # 关闭浏览器
     time.sleep(2)
     driver.quit()
