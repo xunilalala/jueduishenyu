@@ -51,7 +51,7 @@ for user in users:
     driver.execute_script("arguments[0].click();", close_button)
     # 点击签到
     sign_button = WebDriverWait(driver, 10).until(EC.element_to_be_clickable((By.CSS_SELECTOR, "a.poi-tooltip.inn-nav__point-sign-daily__btn[title='签到']")))
-    signin_button.click()
+    driver.execute_script("arguments[0].click();", sign_button)
     # 关闭浏览器
     time.sleep(2)
     driver.quit()
