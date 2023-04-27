@@ -17,11 +17,11 @@ os.environ["webdriver.chrome.driver"] = chromedriver
 
 # 用户名密码表
 users = [
-    
+    {'username': 'xiajibaluanxiede@163.com', 'password': '-K42!FycASxT3mS'},
     {'username': '3120294679@qq.com', 'password': 'ml152636'},
     {'username': '18264410349@163.com', 'password': 'SWNNnq:mi5L6bHT'},
-    {'username': 'wanzhanadmin@163.com', 'password': 'zwD2!D_PhnSWpYR'},
-    {'username': 'xiajibaluanxiede@163.com', 'password': '-K42!FycASxT3mS'}
+    {'username': 'wanzhanadmin@163.com', 'password': 'zwD2!D_PhnSWpYR'}
+    
 ]
 
 for user in users:
