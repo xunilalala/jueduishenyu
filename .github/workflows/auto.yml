@@ -1,4 +1,5 @@
 name: AutomaticCheck-in
+
 on:
   workflow_dispatch:
   schedule:
@@ -8,19 +9,18 @@ on:
     - cron: '0 20 * * 4'
     - cron: '0 21 * * 5'
     - cron: '0 22 * * 6'
-    
-
 
 jobs:
   # This workflow contains a single job called "build"
   build:
     # The type of runner that the job will run on
     runs-on: ubuntu-latest
-      )
+
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
       - name: Random delay
-        run: sleep $(( RANDOM % 144 + 1 ))
+        run: sleep $(( RANDOM % 14400 + 1 ))
+
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - name: Checkout
         uses: actions/checkout@v2
@@ -45,7 +45,5 @@ jobs:
       - name: 'Working'
         run: |
           sudo cp -p ./chrome/chromedriver /usr/bin/
-          chmod -R 777 /usr/bin/chromedriver
+          sudo chmod 755 /usr/bin/chromedriver
           python ./Spider/main.py
-       
-  
