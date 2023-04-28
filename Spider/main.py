@@ -6,7 +6,7 @@ def run_script(script_name):
 
 if __name__ == "__main__":
     # 设置需要同时启动的py文件列表
-    script_list = ["./Spider/ACGAF.py", "./Spider/jueduishenyu.py", "./Spider/shendai.py","./Spider/yuzhai.py","./Spider/xingmeng.py",]
+    script_list = ["./Spider/ACGAF.py", "./Spider/jueduishenyu.py", "./Spider/shendai.py","./Spider/yuzhai.py","./Spider/xingmeng.py","./Spider/zhitu.py"]
 
     # 创建线程池
     with concurrent.futures.ThreadPoolExecutor(max_workers=len(script_list)) as executor:
@@ -15,3 +15,7 @@ if __name__ == "__main__":
 
         # 等待所有任务完成
         concurrent.futures.wait
+    print("===============================")
+    print("===========签到结束============")
+    print("===============================")
+      
