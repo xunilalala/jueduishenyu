@@ -48,7 +48,7 @@ for user in users:
     print(f"Logging in as {user['username']}")
     login_button = WebDriverWait(driver, 5).until(EC.element_to_be_clickable((By.CSS_SELECTOR, "button[type='submit']")))
     driver.execute_script("arguments[0].click();",login_button)
-    close_button = WebDriverWait(driver, 5).until(EC.element_to_be_clickable((By.XPATH, "//a[contains(@class, 'poi-dialog__footer__btn_default') and text()='关闭']")))
+    close_button = WebDriverWait(driver, 10).until(EC.element_to_be_clickable((By.XPATH, "//a[contains(@class, 'poi-dialog__footer__btn_default') and text()='关闭']")))
     driver.execute_script("arguments[0].click();", close_button)
     # 点击签到
     try:
