@@ -33,7 +33,7 @@ for user in users:
     # 打开网页
     driver.get('https://xhcy.us/author/')
     # 点击登录按钮
-    time.sleep(10)
+
     close_button = WebDriverWait(driver, 10).until(EC.element_to_be_clickable((By.CSS_SELECTOR, "a.poi-dialog__header__close")))
     close_button.click()
     # 定位到需要点击的元素
