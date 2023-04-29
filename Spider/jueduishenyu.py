@@ -51,6 +51,10 @@ for user in users:
         EC.presence_of_element_located((By.CLASS_NAME, "go-user-qiandao"))
     )
     driver.find_element_by_class_name("go-user-qiandao").click()
+    driver.find_element_by_class_name("go-user-qiandao").click()
+    driver.find_element_by_class_name("go-user-qiandao").click()
+    time.sleep(1)
+    driver.find_element_by_class_name("go-user-qiandao").click()
     driver.quit()
     print(f"{user['username']}签到完成")
 
