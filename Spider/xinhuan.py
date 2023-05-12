@@ -10,7 +10,7 @@ option.add_experimental_option('excludeSwitches', ['enable-automation'])
 option.add_experimental_option('useAutomationExtension', False)
 chromedriver = "/usr/bin/chromedriver"
 # 创建浏览器对象
-browse = webdriver.Chrome(options=chrome_options,executable_path=chromedriver)
+browse = webdriver.Chrome(options=option,executable_path=chromedriver)
 
 # 将webdriver属性置为undefined
 browser.execute_cdp_cmd('Page.addScriptToEvaluateOnNewDocument',
