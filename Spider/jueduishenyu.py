@@ -18,6 +18,7 @@ users = [
     {'username': 'xuni512', 'password': 'ml,152ml.636'},
     {'username': 'xuni', 'password': 'ml,152ml.636'},
     {'username': 'xuni1024', 'password': 'ml,152ml.636'},
+    {'username': 'SHUAI', 'password': '83081455dong'},
     {'username': 'xuni256', 'password': 'ml,152ml.636'}
 ]
 
