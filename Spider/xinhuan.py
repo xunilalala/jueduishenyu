@@ -8,6 +8,8 @@ import time
 option = webdriver.ChromeOptions()
 option.add_experimental_option('excludeSwitches', ['enable-automation'])
 option.add_experimental_option('useAutomationExtension', False)
+option.add_argument('--no-sandbox')
+option.add_argument('--disable-dev-shm-usage')
 chromedriver = "/usr/bin/chromedriver"
 # 创建浏览器对象
 browser = webdriver.Chrome(options=option,executable_path=chromedriver)
