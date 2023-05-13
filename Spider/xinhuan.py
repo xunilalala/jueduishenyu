@@ -70,7 +70,7 @@ for user in users:
     submit_button.click()
 
     # 显示等待，等待关闭按钮出现
-    close_button = WebDriverWait(browser, 5).until(EC.presence_of_element_located((By.CSS_SELECTOR, "a.poi-dialog__footer__btn")))
+    close_button = WebDriverWait(browser, 10).until(EC.presence_of_element_located((By.CSS_SELECTOR, "a.poi-dialog__footer__btn")))
 
     # 点击关闭按钮
     close_button.click()
