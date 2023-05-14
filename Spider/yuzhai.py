@@ -56,5 +56,5 @@ for user in users:
     # 关闭浏览器
     driver.quit()
     time.sleep(10)
-    print(user['username']+"完成签到")
+   
 print("御宅--完成")
