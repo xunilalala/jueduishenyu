@@ -58,9 +58,9 @@ for user in users:
     try:
         driver.execute_script("arguments[0].click();", reward_button)
     except: 
-        print(user['username']+"签到失败")
+        print(user['username']+"神代签到失败")
     # 关闭浏览器
     driver.quit()
     time.sleep(10)
-    print(user['username']+"结束")
+    
 print("神代--完成")
