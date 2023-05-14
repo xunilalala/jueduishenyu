@@ -80,3 +80,4 @@ for user in users:
     # 点击该元素
     time.sleep(1)
     driver.quit()
+print("纸兔完成签到")
