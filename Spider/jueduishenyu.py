@@ -57,6 +57,6 @@ for user in users:
     time.sleep(1)
     driver.find_element_by_class_name("go-user-qiandao").click()
     driver.quit()
-    print(f"{user['username']}签到完成")
+    
 
 print("绝对神域--完成")
