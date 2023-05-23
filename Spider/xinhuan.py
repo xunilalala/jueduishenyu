@@ -46,10 +46,10 @@ for user in users:
     close_button.click()
 
     # 显示等待，等待登录按钮出现
-    login_button = WebDriverWait(browser, 5).until(EC.presence_of_element_located((By.CLASS_NAME, "inn-sign__login-btn")))
+    # login_button = WebDriverWait(browser, 5).until(EC.presence_of_element_located((By.CLASS_NAME, "inn-sign__login-btn")))
 
     # 点击登录按钮
-    login_button.click()
+    # login_button.click()
 
     # 显示等待，等待邮箱输入框出现
     email_input = WebDriverWait(browser, 5).until(EC.presence_of_element_located((By.NAME, "email")))
