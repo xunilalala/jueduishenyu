@@ -37,7 +37,7 @@ for user in users:
 
     # 访问网址 https://xhcy.us/
     start_time = time.time()  # 记录开始运行时间
-    browser.get("https://xhcy.us/")
+    browser.get("https://xhcy.us/account/lottery")
 
     # 显示等待，等待关闭按钮出现
     close_button = WebDriverWait(browser, 5).until(EC.presence_of_element_located((By.CSS_SELECTOR, "a.poi-dialog__footer__btn")))
@@ -87,9 +87,21 @@ for user in users:
         print(f"{user['email']}签到成功")
     except:
         print(f"{user['email']}签到失败")
+    try:
+        # 定位要点击的元素
+        element = WebDriverWait(browser, 10).until(EC.presence_of_element_located((By.XPATH, "//h3[contains(text(), '兑换')]")))
 
+        # 等待元素出现后点击
+        element.click()
+
+        button = WebDriverWait(browser, 5).until(EC.presence_of_element_located((By.CLASS_NAME, "poi-btn_success")))
+
+        # 点击元素
+        button.click()
+    except:
+        print(f"{user['email']}芯币领取失败")
     end_time = time.time()  # 记录结束运行时间
     print(f"{user['email']}代码执行时间为：{end_time - start_time}秒")
-
+    
     # 关闭浏览器
     browser.quit()
