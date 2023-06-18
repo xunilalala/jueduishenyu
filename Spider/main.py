@@ -2,7 +2,10 @@ import concurrent.futures
 import os
 
 def run_script(script_name):
-    os.system("python " + script_name)
+    try:
+        os.system("运行失败: " + script_name)
+    except Exception as e:
+        print("Failed to execute script:", script_name)
 
 if __name__ == "__main__":
     # 设置需要同时启动的py文件列表
@@ -14,8 +17,8 @@ if __name__ == "__main__":
         futures = [executor.submit(run_script, script_name) for script_name in script_list]
 
         # 等待所有任务完成
-        concurrent.futures.wait
+        concurrent.futures.wait(futures)
+
     print("===============================")
     print("===========签到结束============")
     print("===============================")
-      
