@@ -18,12 +18,12 @@ chromedriver = "/usr/bin/chromedriver"
 
 # 多个用户登录信息
 users = [
-    #{'email': '18264410349@163.com', 'password': 'SWNNnq:mi5L6bHT'},
-    {'email': '3120294679@qq.com', 'password': 'ml152636'}
-    #{'email': 'chengxinchengyi@163.com', 'password': '5hRc.49smV!rq.y'},
-    #{'email': 'wanzhanadmin@163.com', 'password': 'zwD2!D_PhnSWpYR'},
-    #{'email': 'xiangz91121i@163.com', 'password': '4_v8mee73RdRNrH'},
-    #{'email': 'xiajibaluanxiede@163.com', 'password': '-K42!FycASxT3mS'}
+    {'email': '18264410349@163.com', 'password': 'SWNNnq:mi5L6bHT'},
+    {'email': '3120294679@qq.com', 'password': 'ml152636'},
+    {'email': 'chengxinchengyi@163.com', 'password': '5hRc.49smV!rq.y'},
+    {'email': 'wanzhanadmin@163.com', 'password': 'zwD2!D_PhnSWpYR'},
+    {'email': 'xiangz91121i@163.com', 'password': '4_v8mee73RdRNrH'},
+    {'email': 'xiajibaluanxiede@163.com', 'password': '-K42!FycASxT3mS'}
 ]
 
 for user in users:
