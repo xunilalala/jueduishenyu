@@ -39,7 +39,7 @@ for user in users:
 
     # 访问网址 https://xhcy.us/
     start_time = time.time()  # 记录开始运行时间
-    browser.get("https://xhcy.us/account/lottery")
+    browser.get("https://xhcy.moe/account/lottery")
 
     # 显示等待，等待关闭按钮出现
     close_button = WebDriverWait(browser, 5).until(EC.presence_of_element_located((By.CSS_SELECTOR, "a.poi-dialog__footer__btn")))
