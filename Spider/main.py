@@ -3,9 +3,9 @@ import os
 
 def run_script(script_name):
     try:
-        os.system("运行失败: " + script_name)
+        os.system("python " + script_name)
     except Exception as e:
-        print("Failed to execute script:", script_name)
+        print("运行失败:", script_name)
 
 if __name__ == "__main__":
     # 设置需要同时启动的py文件列表
