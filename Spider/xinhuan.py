@@ -106,16 +106,13 @@ for user in users:
         close_button.click()
     except:
         print(f"{user['email']}芯币领取失败")
-    
-    for _ in range(5):
-     try:
-         # 定位要点击的元素
-         xpath = '//div[@class="inn-account__lottery__item poi-list__item"]//h3[contains(text(), "【心念祈愿】用户组 [念*终身]")]'
-         element = WebDriverWait(browser, 10).until(
+    xpath = '//div[@class="inn-account__lottery__item poi-list__item"]//h3[contains(text(), "【心念祈愿】用户组 [念*终身]")]'
+    element = WebDriverWait(browser, 10).until(
              EC.element_to_be_clickable((By.XPATH, xpath))
          )
-         element.click()
-
+    element.click()
+    for _ in range(5):
+     try:
          # 等待按钮出现并点击
          button = WebDriverWait(browser, 5).until(
              EC.presence_of_element_located((By.CLASS_NAME, "poi-btn_success"))
