@@ -13,7 +13,7 @@ option.add_experimental_option('excludeSwitches', ['enable-automation'])
 option.add_experimental_option('useAutomationExtension', False)
 option.add_argument('--no-sandbox')
 option.add_argument('--disable-dev-shm-usage')
-option.add_argument('--headless')
+# option.add_argument('--headless')
 chromedriver = "/usr/bin/chromedriver"
 
 # 多个用户登录信息
@@ -46,12 +46,6 @@ for user in users:
 
     # 点击关闭按钮
     close_button.click()
-
-    # 显示等待，等待登录按钮出现
-    # login_button = WebDriverWait(browser, 5).until(EC.presence_of_element_located((By.CLASS_NAME, "inn-sign__login-btn")))
-
-    # 点击登录按钮
-    # login_button.click()
 
     # 显示等待，等待邮箱输入框出现
     email_input = WebDriverWait(browser, 5).until(EC.presence_of_element_located((By.NAME, "email")))
@@ -106,11 +100,14 @@ for user in users:
         close_button.click()
     except:
         print(f"{user['email']}芯币领取失败")
-    xpath = '//div[@class="inn-account__lottery__item poi-list__item"]//h3[contains(text(), "【心念祈愿】用户组 [念*终身]")]'
-    element = WebDriverWait(browser, 10).until(
-             EC.element_to_be_clickable((By.XPATH, xpath))
-         )
-    element.click()
+    try:
+        xpath = '//div[@class="inn-account__lottery__item poi-list__item"]//h3[contains(text(), "【心念祈愿】用户组 [念*终身]")]'
+        element = WebDriverWait(browser, 10).until(
+                 EC.element_to_be_clickable((By.XPATH, xpath))
+             )
+        element.click()
+    except:
+        print('')
     for _ in range(5):
      try:
          # 等待按钮出现并点击
