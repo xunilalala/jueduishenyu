@@ -57,6 +57,4 @@ for user in users:
     # 关闭浏览器
     time.sleep(2)
     driver.quit()
-   
-    
-print("星梦--完成")
+
