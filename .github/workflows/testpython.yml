@@ -38,4 +38,12 @@ jobs:
           chmod -R 777 /usr/bin/chromedriver
         
           python ./Spider/jueduiinfo.py
+      - name: 保存文件到仓库
+        uses: actions/upload-artifact@v2
+        with:
+          name: 生成的文件
+          path: |
+            ./Spider/简略信息.txt
+            ./Spider/完整信息.txt
+
           
