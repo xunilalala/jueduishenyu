@@ -221,7 +221,7 @@ def scrape_acg088(is_summary, cookie):
     start_time = timer.time()
 
     start_page = 2
-    end_page = 366  # 为了调试，将 end_page 设置为 3
+    end_page = 365  # 为了调试，将 end_page 设置为 3
     flag = 0
 
     if is_summary:
