@@ -145,7 +145,7 @@ from datetime import datetime
 import re
 import time as timer
 from concurrent.futures import ThreadPoolExecutor
-
+import os
 def calculate_total_size(text):
     sizes = re.findall(r'(\d+(\.\d+)?)\s*([TGMK])】', text)
     total_size = 0
@@ -275,7 +275,11 @@ def scrape_acg088(is_summary, cookie):
     run_time_minutes = run_time / 60
     print("程序运行时间：{:.2f}分钟".format(run_time_minutes))
 
+# 获取当前工作目录的路径
+current_path = os.getcwd()
 
+# 打印当前路径
+print("当前路径:", current_path)
 # 调用函数并传入参数
 is_summary = True
 cookie = 'wordpress_logged_in_baec826e068566e2c7fc540b85d003db=xuni256%7C1689770755%7CuzDSsiVsbyCjmSTWeHqQ0Dpli89rtbSqyZTGXB2aDk8%7Cbf8901065719bab77ac359536ef1ee64ea5cf907fcac9dde0dc1b74180c22dd7; ripro_notice_cookie=1'
