@@ -43,7 +43,7 @@ jobs:
         with:
           name: 生成的文件
           path: |
-            ./Spider/简略信息.txt
-            ./Spider/完整信息.txt
+            /home/runner/work/jueduishenyu/jueduishenyu/简略信息.txt
+            /home/runner/work/jueduishenyu/jueduishenyu/完整信息.txt
 
           
