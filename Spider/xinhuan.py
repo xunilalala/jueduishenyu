@@ -13,7 +13,7 @@ option.add_experimental_option('excludeSwitches', ['enable-automation'])
 option.add_experimental_option('useAutomationExtension', False)
 option.add_argument('--no-sandbox')
 option.add_argument('--disable-dev-shm-usage')
-# option.add_argument('--headless')
+option.add_argument('--headless')
 chromedriver = "/usr/bin/chromedriver"
 
 # 多个用户登录信息
