@@ -196,8 +196,10 @@ def scrape_page(page):
         second_soup = BeautifulSoup(second_response.text, "html.parser")
         div_element = second_soup.find("div", class_="entry-content u-text-format u-clearfix")
         p_element = div_element.find("p")
-        content = p_element.get_text().strip()
-
+        if p_element is not None:
+            content = p_element.get_text().strip()
+        else:
+            content = ""
         if is_summary:
             page_data.append((title, content, formatted_time))
         else:
