@@ -150,7 +150,5 @@ print("当前路径:", current_path)
 # 调用函数并传入参数
 is_summary = True
 cookie = 'wordpress_logged_in_baec826e068566e2c7fc540b85d003db=xuni256%7C1689770755%7CuzDSsiVsbyCjmSTWeHqQ0Dpli89rtbSqyZTGXB2aDk8%7Cbf8901065719bab77ac359536ef1ee64ea5cf907fcac9dde0dc1b74180c22dd7; ripro_notice_cookie=1'
-
-scrape_acg088(is_summary, cookie)
 is_summary = False
 scrape_acg088(is_summary, cookie)
