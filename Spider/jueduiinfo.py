@@ -1,3 +1,144 @@
+# import requests
+# from bs4 import BeautifulSoup
+# from datetime import datetime
+# import re
+# import time as timer
+
+# def parse_size(size_str):
+#     size_match = re.search(r'(\d+(\.\d+)?)\s*([TGMK]?)', size_str)
+#     if size_match:
+#         size = float(size_match.group(1))
+#         unit = size_match.group(3)
+#         if unit == 'T':
+#             size *= 1
+#         elif unit == 'G':
+#             size /= 1024
+#         elif unit == 'M':
+#             size /= 1024 * 1024
+#         elif unit == 'K':
+#             size /= 1024 * 1024 * 1024
+#         return size
+#     else:
+#         return 0
+
+# def calculate_total_size(text):
+#     sizes = re.findall(r'(\d+(\.\d+)?)\s*[TGMK]', text)
+#     total_size = sum(parse_size(size_str) for size_str, _ in sizes)
+#     return total_size
+
+# def scrape_acg088(is_summary, cookie):
+#     # 记录开始时间
+#     start_time = timer.time()
+
+#     start_page = 2
+#     end_page = 2  # 调试时可以将 end_page 改为3
+#     flag = 0
+
+#     headers = {
+#         'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36',
+#         'Cookie': cookie
+#     }
+
+#     total_size = 0
+
+#     with open("result.txt", "w", encoding="utf-8") as file:
+#         for page in range(start_page, end_page + 1):
+#             url = f"http://www.acg088.com/page/{page}"
+#             print(f"当前正在捕获第{page}页")
+#             response = requests.get(url, headers=headers)
+#             soup = BeautifulSoup(response.text, "html.parser")
+
+#             div_container = soup.select_one("#rizhuti_v2_module_lastpost_item-3")
+#             divs = div_container.find_all("div", class_="col-lg-5ths col-lg-3 col-md-4 col-6")
+
+#             for div in divs:
+#                 title = div.find("h2", class_="entry-title").text.strip()
+#                 content = div.find("div", class_="entry-excerpt").text.strip()
+
+#                 time_tag = div.find("span", class_="meta-date")
+#                 time_str = time_tag.find("time")["datetime"]
+#                 time = datetime.strptime(time_str, "%Y-%m-%dT%H:%M:%S%z")
+
+#                 formatted_time = time.strftime("%Y-%m-%d")
+
+#                 if is_summary:
+#                     print("标题:", title)
+#                     print("内容:", content)
+#                     print("时间:", formatted_time)
+#                     print()
+#                 else:
+#                     # 提取二级网址
+#                     entry_media = div.find("div", class_="entry-media")
+#                     second_level_url = entry_media.find("a")["href"]
+
+#                     print("标题:", title)
+#                     print("内容:", content)
+#                     print("时间:", formatted_time)
+#                     print("二级网址:", second_level_url)
+
+#                     # 访问二级网址
+#                     second_response = requests.get(second_level_url, headers=headers)
+#                     second_soup = BeautifulSoup(second_response.text, "html.parser")
+
+#                     # 提取三级网址和密码
+#                     btn_group = second_soup.find("div", class_="btn-group btn-block mt-2")
+#                     third_level_url = btn_group.find("a")["href"]
+#                     password = btn_group.find("button", class_="go-copy")["data-clipboard-text"]
+
+#                     print("三级网址:", third_level_url)
+#                     print("密码:", password)
+#                     print()
+
+#                     # 访问三级网址并获取四级网址
+#                     third_response = requests.get(third_level_url, headers=headers, allow_redirects=False)
+#                     fourth_level_url = third_response.headers["Location"]
+#                     print("四级网址:", fourth_level_url)
+#                     print()
+
+#                     # 统计文件大小
+#                     size_match = re.search(r'\[(\d+(\.\d+)?)\s*([TGMK]?)\]', title)
+#                     if size_match:
+#                         size_str = size_match.group(1) + " " + size_match.group(3)
+#                         size = parse_size(size_str)
+#                         total_size += size
+
+#                 file.write("标题: " + title + "\n")
+#                 file.write("内容: " + content + "\n")
+#                 file.write("时间: " + formatted_time + "\n")
+#                 if not is_summary:
+#                     file.write("二级网址: " + second_level_url + "\n")
+#                     file.write("三级网址: " + third_level_url + "\n")
+#                     file.write("四级网址: " + fourth_level_url + "\n")
+#                     file.write("密码: " + password + "\n")
+#                 file.write("\n")
+#                 flag += 1
+
+#     print()
+#     print(f"共收录{flag}条消息")
+
+#     file_name = "result.txt"
+#     with open(file_name, 'r', encoding='utf-8') as file:
+#         text = file.read()
+
+#     header_line = f"共收录{flag}条信息，总大小为{total_size:.2f}T\n"
+
+#     with open(file_name, 'r+', encoding='utf-8') as file:
+#         content = file.read()
+#         file.seek(0, 0)
+#         file.write(header_line + content)
+
+#     print(header_line)
+
+#     end_time = timer.time()
+#     run_time = end_time - start_time
+#     run_time_minutes = run_time / 60
+#     print("程序运行时间：{:.2f}分钟".format(run_time_minutes))
+
+
+# is_summary = True
+# cookie = 'wordpress_logged_in_baec826e068566e2c7fc540b85d003db=xuni256%7C1689770755%7CuzDSsiVsbyCjmSTWeHqQ0Dpli89rtbSqyZTGXB2aDk8%7Cbf8901065719bab77ac359536ef1ee64ea5cf907fcac9dde0dc1b74180c22dd7; ripro_notice_cookie=1'
+
+# scrape_acg088(is_summary, cookie)
 import requests
 from bs4 import BeautifulSoup
 from datetime import datetime
@@ -77,16 +218,16 @@ def scrape_page(page):
                 fourth_level_url = ""
 
             page_data.append((title, content, formatted_time, second_level_url, third_level_url, password, fourth_level_url))
-
+        print(f"第 { page } 页"+ fourth_level_url+" : "+ title )
     return page_data
 
 
-def scrape_acg088(is_summary, cookie):
+def scrape_acg088(is_summary, cookie, start, end):
     # 记录开始时间
     start_time = timer.time()
 
-    start_page = 2
-    end_page = 365  # 为了调试，将 end_page 设置为 3
+    start_page = start
+    end_page = end  # 为了调试，将 end_page 设置为 3
     flag = 0
 
     if is_summary:
@@ -109,13 +250,9 @@ def scrape_acg088(is_summary, cookie):
                     file.write("时间: " + formatted_time + "\n")
 
                     if not is_summary:
-                        second_level_url, third_level_url, password, fourth_level_url = extra_data
-
-                        file.write("二级网址: " + second_level_url + "\n")
-                        file.write("三级网址: " + third_level_url + "\n")
-                        file.write("密码: " + password + "\n")
-                        file.write("四级网址: " + fourth_level_url + "\n")
-
+                        password, fourth_level_url = extra_data
+                        file.write("网盘网址: " + fourth_level_url + "\n")
+                        file.write("密码: " + password + "\n")    
                     file.write("\n")
                     flag += 1
 
@@ -151,4 +288,4 @@ print("当前路径:", current_path)
 is_summary = True
 cookie = 'wordpress_logged_in_baec826e068566e2c7fc540b85d003db=xuni256%7C1689770755%7CuzDSsiVsbyCjmSTWeHqQ0Dpli89rtbSqyZTGXB2aDk8%7Cbf8901065719bab77ac359536ef1ee64ea5cf907fcac9dde0dc1b74180c22dd7; ripro_notice_cookie=1'
 is_summary = False
-scrape_acg088(is_summary, cookie)
+scrape_acg088(is_summary, cookie,2,372)
