@@ -27,51 +27,26 @@ users = [
 ]
 
 for user in users:
-    # 创建浏览器对象
-    browser = webdriver.Chrome(options=option,executable_path=chromedriver)
 
-    # 将webdriver属性置为undefined
+    browser = webdriver.Chrome(options=option,executable_path=chromedriver)
     browser.execute_cdp_cmd('Page.addScriptToEvaluateOnNewDocument',
                             {'source': 'Object.defineProperty(navigator, "webdriver", {get: () => undefined})'})
-
-    # 窗口最大化
     browser.maximize_window()
-
-    # 访问网址 https://xhcy.us/
     start_time = time.time()  # 记录开始运行时间
     browser.get("https://xhcy.moe/account/lottery")
-
-    # 显示等待，等待关闭按钮出现
     close_button = WebDriverWait(browser, 5).until(EC.presence_of_element_located((By.CSS_SELECTOR, "a.poi-dialog__footer__btn")))
-
-    # 点击关闭按钮
     close_button.click()
-
-    # 显示等待，等待邮箱输入框出现
     email_input = WebDriverWait(browser, 5).until(EC.presence_of_element_located((By.NAME, "email")))
-
-    # 输入邮箱
     email_input.send_keys(user['email'])
-
-    # 显示等待，等待密码输入框出现
     password_input = WebDriverWait(browser, 5).until(EC.presence_of_element_located((By.NAME, "pwd")))
-
-    # 输入密码
     password_input.send_keys(user['password'])
-
-    # 显示等待，等待登录按钮出现
     submit_button = WebDriverWait(browser, 5).until(EC.presence_of_element_located((By.CSS_SELECTOR, "button.poi-dialog__footer__btn_success")))
-
-    # 点击登录按钮
     submit_button.click()
-
-    # 显示等待，等待关闭按钮出现
     close_button = WebDriverWait(browser, 20).until(EC.presence_of_element_located((By.CSS_SELECTOR, "a.poi-dialog__footer__btn")))
-
-    # 点击关闭按钮
     close_button.click()
 
-    #点击签到按钮
+
+    #签到部分
     try:
         wait = WebDriverWait(browser, 10)
         button = wait.until(EC.element_to_be_clickable((By.CSS_SELECTOR, '#inn-nav__point-sign-daily a')))
@@ -83,7 +58,7 @@ for user in users:
         print(f"{user['email']}签到成功")
     except:
         print(f"{user['email']}签到失败")
-    time.sleep(10)
+    time.sleep(5)
     try:
         # 定位要点击的元素
         element = wait.until(EC.element_to_be_clickable((By.CSS_SELECTOR, 'div.inn-account__lottery__item.poi-list__item h3.inn-account__lottery__item__title')))
@@ -96,42 +71,43 @@ for user in users:
         close_button = WebDriverWait(browser, 5).until(
             EC.element_to_be_clickable((By.CSS_SELECTOR, 'button.poi-dialog__footer__btn.poi-dialog__footer__btn_default'))
         )
-        time.sleep(2)  # 可选的等待时间
+        time.sleep(1)  # 可选的等待时间
         close_button.click()
+        time.sleep(1)
     except:
         print(f"{user['email']}芯币领取失败")
+    
     try:
         xpath = '//div[@class="inn-account__lottery__item poi-list__item"]//h3[contains(text(), "【心念祈愿】用户组 [念*终身]")]'
         element = WebDriverWait(browser, 10).until(
                  EC.element_to_be_clickable((By.XPATH, xpath))
              )
         element.click()
-    except:
-        print('')
-    for _ in range(5):
-     try:
-         # 等待按钮出现并点击
-         button = WebDriverWait(browser, 5).until(
-             EC.presence_of_element_located((By.CLASS_NAME, "poi-btn_success"))
-         )
-         element = WebDriverWait(browser, 10).until(
-             EC.presence_of_element_located((By.CLASS_NAME, 'inn-user-code__container'))
-         )
-         time.sleep(2)  # 可选的等待时间
+        for _ in range(5):
+            
+                 # 等待按钮出现并点击
+            button = WebDriverWait(browser, 5).until(
+                EC.presence_of_element_located((By.CLASS_NAME, "poi-btn_success"))
+            )
+            element = WebDriverWait(browser, 10).until(
+                EC.presence_of_element_located((By.CLASS_NAME, 'inn-user-code__container'))
+            )
+            time.sleep(2)  # 可选的等待时间
 
-         button.click()
+            button.click()
 
-         # 等待对话框出现并定位
-         dialog = WebDriverWait(browser, 10).until(
-             EC.visibility_of_element_located((By.CSS_SELECTOR, 'div.poi-dialog__container.with-overlay'))
-         )
+            # 等待对话框出现并定位
+            dialog = WebDriverWait(browser, 10).until(
+                EC.visibility_of_element_located((By.CSS_SELECTOR, 'div.poi-dialog__container.with-overlay'))
+            )
 
-         # 点击关闭按钮
-         close_button = dialog.find_element(By.CSS_SELECTOR, 'button.poi-dialog__footer__btn')
-         close_button.click()
+            # 点击关闭按钮
+            close_button = dialog.find_element(By.CSS_SELECTOR, 'button.poi-dialog__footer__btn')
+            close_button.click()
 
-     except Exception as e:
-         print("出现异常:", e)
+    except Exception as e:
+        print("兑换失败")
+        print("出现异常:", e)
 
 
     endtime = time.time()  # 记录结束运行时间
