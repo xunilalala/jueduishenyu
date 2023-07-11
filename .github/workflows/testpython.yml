@@ -37,13 +37,7 @@ jobs:
           sudo cp -p ./chrome/chromedriver /usr/bin/
           chmod -R 777 /usr/bin/chromedriver
         
-          python ./Spider/jueduiinfo.py
-      - name: 保存文件到仓库
-        uses: actions/upload-artifact@v2
-        with:
-          name: 生成的文件
-          path: |
-            /home/runner/work/jueduishenyu/jueduishenyu/简略信息.txt
-            /home/runner/work/jueduishenyu/jueduishenyu/完整信息.txt
+          python ./Spider/main.py
+     
 
           
