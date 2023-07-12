@@ -1,4 +1,3 @@
-
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
@@ -82,7 +81,9 @@ for user in users:
         element = WebDriverWait(browser, 10).until(
                  EC.element_to_be_clickable((By.XPATH, xpath))
              )
-        element.click()
+        
+    
+        browser.execute_script("arguments[0].click();", element)
         for _ in range(5):
             
                  # 等待按钮出现并点击
@@ -92,15 +93,14 @@ for user in users:
             element = WebDriverWait(browser, 10).until(
                 EC.presence_of_element_located((By.CLASS_NAME, 'inn-user-code__container'))
             )
-            time.sleep(2)  # 可选的等待时间
-
-            button.click()
-
+            browser.execute_script("arguments[0].click();", button)
+    
+    
             # 等待对话框出现并定位
             dialog = WebDriverWait(browser, 10).until(
                 EC.visibility_of_element_located((By.CSS_SELECTOR, 'div.poi-dialog__container.with-overlay'))
             )
-
+    
             # 点击关闭按钮
             close_button = dialog.find_element(By.CSS_SELECTOR, 'button.poi-dialog__footer__btn')
             close_button.click()
