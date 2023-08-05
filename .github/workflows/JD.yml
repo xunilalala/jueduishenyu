@@ -22,13 +22,13 @@ jobs:
         run: cd ./chrome/
 
       - name: Install dependencies
-        run: npm install
+        run: npm install ./chrome/package.json
 
       - name: Run jd_bean_home.js
         run: node ./chrome/jd_bean_home.js
 
-      - name: Run jd_fruit.js
-        run: node ./chrome/jd_fruit.js
+      # - name: Run jd_fruit.js
+      #   run: node ./chrome/jd_fruit.js
 
-      - name: Run jd_plantBean.js
-        run: node ./chrome/jd_plantBean.js
+      # - name: Run jd_plantBean.js
+      #   run: node ./chrome/jd_plantBean.js
