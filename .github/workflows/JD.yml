@@ -1,0 +1,31 @@
+name: Run JD Scripts
+
+on:
+  push:
+    branches:
+      - main  # 触发条件可以根据你的需求进行调整
+
+jobs:
+  run_scripts:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: '18'  # 选择适合你的 Node.js 版本
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Run jd_bean_home.js
+        run: node ./chrome/jd_bean_home.js
+
+      - name: Run jd_fruit.js
+        run: node ./chrome/jd_fruit.js
+
+      - name: Run jd_plantBean.js
+        run: node ./chrome/jd_plantBean.js
