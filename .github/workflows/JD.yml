@@ -12,7 +12,14 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@main  #采用main分支下的
-           
+      - name: Use Secrets
+        env:
+          JD_COOKIE: ${{ secrets.JD_COOKIE }}
+          PUSH_PLUS_TOKEN: ${{ secrets.PUSH_PLUS_TOKEN }}
+        run: |
+          echo "JD_COOKIE=\"$JD_COOKIE\"" >> .env
+          echo "PUSH_PLUS_TOKEN=\"$PUSH_PLUS_TOKEN\"" >> .env
+          
       - name: Setup Node.js
         uses: actions/setup-node@v2  #安装node.js
         with:
