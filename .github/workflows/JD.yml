@@ -25,7 +25,7 @@ jobs:
         run: npm install ./chrome
 
       - name: Run jd_bean_home.js
-        run: node ./chrome/jd_bean_home.js
+        run: bash jd.sh
 
       # - name: Run jd_fruit.js
       #   run: node ./chrome/jd_fruit.js
