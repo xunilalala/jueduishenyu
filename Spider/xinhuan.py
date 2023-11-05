@@ -13,7 +13,6 @@ option.add_experimental_option('useAutomationExtension', False)
 option.add_argument('--no-sandbox')
 option.add_argument('--disable-dev-shm-usage')
 option.add_argument('--headless')
-chromedriver = "/usr/bin/chromedriver"
 
 # 多个用户登录信息
 users = [
@@ -27,7 +26,7 @@ users = [
 
 for user in users:
 
-    browser = webdriver.Chrome(options=option,executable_path=chromedriver)
+    browser = webdriver.Chrome(options=option)
     browser.execute_cdp_cmd('Page.addScriptToEvaluateOnNewDocument',
                             {'source': 'Object.defineProperty(navigator, "webdriver", {get: () => undefined})'})
     browser.maximize_window()
