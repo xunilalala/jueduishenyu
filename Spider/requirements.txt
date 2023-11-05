@@ -1,6 +1,6 @@
 requests==2.23.0
 lxml==4.5.1
-selenium
+selenium==4.1.2
 Pillow
 ddddocr
 BeautifulSoup4
