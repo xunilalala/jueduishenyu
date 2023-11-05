@@ -40,6 +40,4 @@ jobs:
 
       - name: 'Working'
         run: |
-          sudo cp -p ./chrome/chromedriver /usr/bin/
-          sudo chmod 755 /usr/bin/chromedriver
-          python ./Spider/main.py
+          python ./Spider/xinhuan.py
